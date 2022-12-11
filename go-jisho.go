@@ -32,3 +32,20 @@ func Search(key string) (Data, error) {
 
 	return data, nil
 }
+
+// gets indexes and returns all japanes kanji and writing
+func (data Data) TransJapan(index ...int) ([]Japanese) {
+        var japanes []Japanese
+        for _,val := range index{
+        japanes = append(japanes, data.Data[val].Japanese...)
+        }
+        return japanes
+}
+
+func (data Data) EngDefinition(index ...int) ([]Senses) {
+        var senses []Senses
+        for _,val := range index{
+                senses = append(senses, data.Data[val].Senses...)
+        }
+        return senses
+}
