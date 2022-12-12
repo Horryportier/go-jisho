@@ -33,8 +33,10 @@ func Search(key string) (Data, error) {
 	return data, nil
 }
 
-// gets indexes and returns all japanes kanji and writing
-func (data Data) TransJapan(index ...int) ([]Japanese) {
+// gets indexes and returns all japanese kanji and writing
+func (word Word) TransJapan(index ...int) ([]Japanese) {
+        var data Data
+        data = word.Data
         var japanes []Japanese
         for _,val := range index{
         japanes = append(japanes, data.Data[val].Japanese...)
@@ -42,10 +44,15 @@ func (data Data) TransJapan(index ...int) ([]Japanese) {
         return japanes
 }
 
-func (data Data) EngDefinition(index ...int) ([]Senses) {
+func (word Word) EngDefinition(index ...int) ([]Senses) {
+        var data Data
+        data = word.Data
         var senses []Senses
         for _,val := range index{
                 senses = append(senses, data.Data[val].Senses...)
         }
         return senses
 }
+
+
+
