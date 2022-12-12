@@ -20,11 +20,11 @@ func Search(key string) (Word, error) {
 
 	resp, err := http.Get(url)
 	if err != nil {
-		return data, err
+		return word, err
 	}
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return data, err
+		return word, err
 	}
 
 	json.Unmarshal([]byte(body), &word)
