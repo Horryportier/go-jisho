@@ -12,8 +12,8 @@ const (
 )
 
 // takes word as key and returns data and error
-func Search(key string) (Data, error) {
-	var data Data
+func Search(key string) (word, error) {
+	var word Word 
 
 	url := func() string {
 		return api + key
@@ -28,9 +28,9 @@ func Search(key string) (Data, error) {
                 return data, err
         }
 
-        json.Unmarshal([]byte(body), &data)
+        json.Unmarshal([]byte(body), &word)
 
-	return data, nil
+	return word, nil
 }
 
 // gets indexes and returns all japanese kanji and writing
