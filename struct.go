@@ -4,11 +4,10 @@ type Word struct {
 	Meta struct {
 		Status int `json:"status"`
 	} `json:"meta"`
-	Data Data `json:"data"`
+	Data []Data `json:"data"`
 }
 
 type Data struct {
-	Data []struct {
 		Slug        string        `json:"slug"`
 		IsCommon    bool          `json:"is_common"`
 		Tags        []interface{} `json:"tags"`
@@ -16,7 +15,6 @@ type Data struct {
 		Japanese    []Japanese      `json:"japanese"`
 		Senses      []Senses        `json:"senses"`
 		Attribution Attribution   `json:"attribution"`
-	}
 }
 
 type Japanese struct {
