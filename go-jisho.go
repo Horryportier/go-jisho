@@ -38,7 +38,7 @@ func (word Word) TransJapan(index ...int) []Japanese {
 	data = word.Data
 	var japanes []Japanese
 	for _, val := range index {
-		japanes = append(japanes, data.Data[val].Japanese...)
+		japanes = append(japanes, data[val].Japanese...)
 	}
 	return japanes
 }
@@ -48,7 +48,7 @@ func (word Word) EngDefinition(index ...int) []Senses {
 	data = word.Data
 	var senses []Senses
 	for _, val := range index {
-		senses = append(senses, data.Data[val].Senses...)
+		senses = append(senses, data[val].Senses...)
 	}
 	return senses
 }
