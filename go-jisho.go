@@ -12,7 +12,7 @@ const (
 )
 
 // takes word as key and returns data and error
-func Search(key string) (word, error) {
+func Search(key string) (Word, error) {
 	var word Word 
 
 	url := func() string {
