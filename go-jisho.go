@@ -12,7 +12,7 @@ const (
 	api string = "https://jisho.org/api/v1/search/words?keyword="
 )
 
-func getUrl(key string) (string) {
+func GetUrl(key string) (string) {
         romaji := kana.KanaToRomaji(key)
         return api+romaji
 }
@@ -20,7 +20,7 @@ func getUrl(key string) (string) {
 func Search(key string) (Word, error) {
 	var word Word
 
-	url := getUrl(key) 
+	url := GetUrl(key) 
 	resp, err := http.Get(url)
 	if err != nil {
 		return word, err
