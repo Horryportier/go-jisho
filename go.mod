@@ -1,3 +1,3 @@
-module github.com/jisho
+module github.com/Horryportier/go-jisho
 
 go 1.18
