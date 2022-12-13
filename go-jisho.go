@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+        "github.com/gojp/kana"
 )
 
 const (
@@ -11,11 +12,11 @@ const (
 )
 
 // takes word as key and returns data and error
-func Search(key rune) (Word, error) {
+func Search(key string) (Word, error) {
 	var word Word
 
 	url := func() string {
-		return api + string(key)
+		return api + kana.KanaToRomaji(key)
 	}()
         print(url)
 
