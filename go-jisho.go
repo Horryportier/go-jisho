@@ -11,11 +11,11 @@ const (
 )
 
 // takes word as key and returns data and error
-func Search(key string) (Word, error) {
+func Search(key rune) (Word, error) {
 	var word Word
 
 	url := func() string {
-		return api + key
+		return api + string(key)
 	}()
         print(url)
 
