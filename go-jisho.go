@@ -1,10 +1,11 @@
-package gojisho 
+package gojisho
 
 import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-        "github.com/gojp/kana"
+
+	"github.com/gojp/kana"
 )
 
 const (
@@ -17,6 +18,7 @@ func Search(key string) (Word, error) {
 
 	url := func() string {
                 romaji := kana.KanaToRomaji(key)
+                print(romaji)
 		return api + romaji
 	}()
         print(url)
