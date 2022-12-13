@@ -17,8 +17,7 @@ func Search(key string) (Word, error) {
 	var word Word
 
 	url := func() string {
-                romaji := kana.KanaToRomaji(key)
-                print(romaji)
+                romaji := kana.RomajiToKatakana(key)
 		return api + romaji
 	}()
         print(url)
