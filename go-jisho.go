@@ -17,6 +17,7 @@ func Search(key string) (Word, error) {
 	url := func() string {
 		return api + key
 	}()
+        print(url)
 
 	resp, err := http.Get(url)
 	if err != nil {
