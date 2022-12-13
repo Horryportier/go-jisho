@@ -12,16 +12,15 @@ const (
 	api string = "https://jisho.org/api/v1/search/words?keyword="
 )
 
+func getUrl(key string) (string) {
+        romaji := kana.KanaToRomaji(key)
+        return api+romaji
+}
 // takes word as key and returns data and error
 func Search(key string) (Word, error) {
 	var word Word
 
-	url := func() string {
-                romaji := kana.KanaToRomaji(key)
-		return api + romaji
-	}()
-        print(url)
-
+	url := getUrl(key) 
 	resp, err := http.Get(url)
 	if err != nil {
 		return word, err
@@ -51,6 +50,14 @@ func (word Word) EngDefinition(index ...int) []Senses {
                 senses = append(senses, word.Data[val].Senses...)
         }
 	return senses
+}
+
+func (word Word) Jlpt(index ...int) []string {
+        var jlpt []string
+        for _, val := range index {
+                jlpt = append(jlpt, word.Data[val].Jlpt...)
+        }
+        return jlpt
 }
 
 func (word Word) Status() int {
