@@ -45,6 +45,7 @@ func (word Word) TransJapan(index ...int) []Japanese {
 	return japanes
 }
 
+//Gets eng EngDefinition for every item in data
 func (word Word) EngDefinition(index ...int) []Senses {
 	var senses []Senses
 	for _, val := range index {
@@ -53,6 +54,7 @@ func (word Word) EngDefinition(index ...int) []Senses {
 	return senses
 }
 
+//Gets eng Jlpt every item in data
 func (word Word) Jlpt(index ...int) []string {
         var jlpt []string
         for _, val := range index {
@@ -63,4 +65,8 @@ func (word Word) Jlpt(index ...int) []string {
 
 func (word Word) Status() int {
 	return word.Meta.Status
+}
+
+func (word Word) Len() int {
+        return len(word.Data)
 }
