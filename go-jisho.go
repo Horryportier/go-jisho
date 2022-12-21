@@ -29,6 +29,7 @@ func Search(key string) (Word, error) {
 	if err != nil {
 		return word, err
 	}
+        defer resp.Body.Close() 
 
 	json.Unmarshal([]byte(body), &word)
 
