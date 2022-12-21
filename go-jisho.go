@@ -3,6 +3,7 @@ package gojisho
 import (
 	"encoding/json"
 	"io/ioutil"
+	"log"
 	"net/http"
 
 	"github.com/gojp/kana"
@@ -36,10 +37,25 @@ func Search(key string) (Word, error) {
 	return word, nil
 }
 
+// gets  indexes and returs respective items
+func (word Word) GetEntries(index ...int) []Data {
+        var data []Data
+        for _, val := range index {
+                if val >= word.Len() {
+                        log.Fatal("index out of range")
+                }
+                data = append(data, word.Data[val])
+        }
+        return data
+}
+
 // gets indexes and returns all japanese kanji and writing
 func (word Word) TransJapan(index ...int) []Japanese {
 	var japanes []Japanese
 	for _, val := range index {
+                if val >= word.Len() {
+                        log.Fatal("index out of range")
+                }
                 japanes = append(japanes, word.Data[val].Japanese...)
 	}
 	return japanes
@@ -49,6 +65,9 @@ func (word Word) TransJapan(index ...int) []Japanese {
 func (word Word) EngDefinition(index ...int) []Senses {
 	var senses []Senses
 	for _, val := range index {
+                if val >= word.Len() {
+                        log.Fatal("index out of range")
+                }
                 senses = append(senses, word.Data[val].Senses...)
         }
 	return senses
@@ -58,6 +77,9 @@ func (word Word) EngDefinition(index ...int) []Senses {
 func (word Word) Jlpt(index ...int) []string {
         var jlpt []string
         for _, val := range index {
+                if val >= word.Len() {
+                        log.Fatal("index out of range")
+                }
                 jlpt = append(jlpt, word.Data[val].Jlpt...)
         }
         return jlpt
@@ -70,3 +92,4 @@ func (word Word) Status() int {
 func (word Word) Len() int {
         return len(word.Data)
 }
+
