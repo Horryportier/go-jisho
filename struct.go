@@ -10,7 +10,7 @@ type Word struct {
 type Data struct {
 		Slug        string        `json:"slug"`
 		IsCommon    bool          `json:"is_common"`
-		Tags        []interface{} `json:"tags"`
+		Tags        []string `json:"tags"`
 		Jlpt        []string      `json:"jlpt"`
 		Japanese    []Japanese      `json:"japanese"`
 		Senses      []Senses        `json:"senses"`
