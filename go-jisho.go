@@ -21,7 +21,7 @@ func GetUrl(key string) string {
 func Search(key string, isEng bool) (Word, error) {
 	var word Word
 
-	if isEng {
+	if !isEng {
 		key = kana.KanaToRomaji(key)
 	}
 	url := GetUrl(key)
