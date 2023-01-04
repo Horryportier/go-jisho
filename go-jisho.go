@@ -18,12 +18,10 @@ func GetUrl(key string) string {
 }
 
 // takes word as key and returns data and error
-func Search(key string, isEng bool) (Word, error) {
+func Search(key string) (Word, error) {
 	var word Word
 
-	if !isEng {
-		key = kana.KanaToRomaji(key)
-	}
+	key = kana.KanaToRomaji(key)
 	url := GetUrl(key)
 
 	resp, err := http.Get(url)
