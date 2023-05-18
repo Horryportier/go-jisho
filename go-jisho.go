@@ -2,6 +2,8 @@ package gojisho
 
 import (
 	"encoding/json"
+	"errors"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -18,73 +20,80 @@ func GetUrl(key string) string {
 }
 
 // takes word as key and returns data and error
-func Search(key string) (Word, error) {
-	var word Word
-
+func Search(key string) ([]byte, error) {
 	key = kana.KanaToRomaji(key)
 	url := GetUrl(key)
 
 	resp, err := http.Get(url)
 	if err != nil {
-		return word, err
+		return []byte{}, err
 	}
+
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return word, err
+		return []byte{}, err
 	}
+
 	defer resp.Body.Close()
 
-	json.Unmarshal([]byte(body), &word)
+	return body, nil
+}
 
+func (word Word) Parse(payload []byte) (Word, error) {
+	err := json.Unmarshal([]byte(payload), &word)
+	if err != nil {
+		fmt.Println("s1 err:", ResolveUnmarshalErr(payload, err))
+		return word, err
+	}
 	return word, nil
 }
 
 // gets  indexes and returs respective items
-func (word Word) GetEntries(index ...int) []Data {
+func (word Word) GetEntries(index ...int) ([]Data, error) {
 	var data []Data
-	for _, val := range index {
-		if val >= word.Len() {
-			log.Fatal("index out of range")
+	for i := range index {
+		if i >= word.Len() {
+			return data, errors.New("No items in Data")
 		}
-		data = append(data, word.Data[val])
+		data = append(data, word.Data[i])
 	}
-	return data
+	return data, nil
 }
 
 // gets indexes and returns all japanese kanji and writing
-func (word Word) TransJapan(index ...int) []Japanese {
-	var japanes []Japanese
+func (word Word) TransJapan(index ...int) ([]Japanese, error) {
+	var data []Japanese
 	for _, val := range index {
 		if val >= word.Len() {
-			log.Fatal("index out of range")
+			return data, errors.New("No items in Japanese")
 		}
-		japanes = append(japanes, word.Data[val].Japanese...)
+		data = append(data, word.Data[val].Japanese...)
 	}
-	return japanes
+	return data, nil
 }
 
-//Gets eng EngDefinition for every item in data
-func (word Word) EngDefinition(index ...int) []Senses {
-	var senses []Senses
+// Gets eng EngDefinition for every item in data
+func (word Word) EngDefinition(index ...int) ([]Senses, error) {
+	var data []Senses
 	for _, val := range index {
 		if val >= word.Len() {
-			log.Fatal("index out of range")
+			return data, errors.New("No items in Senses")
 		}
-		senses = append(senses, word.Data[val].Senses...)
+		data = append(data, word.Data[val].Senses...)
 	}
-	return senses
+	return data, nil
 }
 
-//Gets eng Jlpt every item in data
+// Gets eng Jlpt every item in data
 func (word Word) Jlpt(index ...int) []string {
-	var jlpt []string
+	var data []string
 	for _, val := range index {
 		if val >= word.Len() {
 			log.Fatal("index out of range")
 		}
-		jlpt = append(jlpt, word.Data[val].Jlpt...)
+		data = append(data, word.Data[val].Jlpt...)
 	}
-	return jlpt
+	return data
 }
 
 func (word Word) Status() int {
@@ -94,3 +103,15 @@ func (word Word) Status() int {
 func (word Word) Len() int {
 	return len(word.Data)
 }
+
+func (word Word) First() (Data, error) {
+	var data Data = Data{}
+
+    d, err  := word.GetEntries([]int{1}...)
+    if err != nil {
+            return data,err
+    }
+    return  d[len(d)-1] , nil 
+}
+
+
