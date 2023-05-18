@@ -15,7 +15,7 @@ const (
 
 func GetUrl(key string) string {
 	url := fmt.Sprintf("%s%s", api, key)
-	fmt.Println(url)
+	//fmt.Println(url)
 	return url
 }
 
