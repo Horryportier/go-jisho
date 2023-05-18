@@ -7,7 +7,6 @@ import (
 	"io"
 	"log"
 	"net/http"
-	//"github.com/gojp/kana"
 )
 
 const (
@@ -22,7 +21,6 @@ func GetUrl(key string) string {
 
 //BUG: passing kanji will result in bad request even if request works in web browser
 func Search(key string) ([]byte, error) {
-	//key = kana.KanaToRomaji(key)
 	url := GetUrl(key)
 
 	client := &http.Client{}
