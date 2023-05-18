@@ -4,11 +4,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
-
-	"github.com/gojp/kana"
+	//"github.com/gojp/kana"
 )
 
 const (
@@ -16,26 +15,35 @@ const (
 )
 
 func GetUrl(key string) string {
-	return api + key
+	url := fmt.Sprintf("%s%s", api, key)
+	fmt.Println(url)
+	return url
 }
 
-// takes word as key and returns data and error
+//BUG: passing kanji will result in bad request even if request works in web browser
 func Search(key string) ([]byte, error) {
-	key = kana.KanaToRomaji(key)
+	//key = kana.KanaToRomaji(key)
 	url := GetUrl(key)
 
-	resp, err := http.Get(url)
+	client := &http.Client{}
+
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return []byte{}, err
 	}
 
-	body, err := ioutil.ReadAll(resp.Body)
+	req.Header.Set("User-Agent", "Golang_Spider_Bot/3.0")
+
+	resp, err := client.Do(req)
 	if err != nil {
 		return []byte{}, err
 	}
-
 	defer resp.Body.Close()
-
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return []byte{}, err
+	}
+	//fmt.Printf("res: %s", body)
 	return body, nil
 }
 
@@ -107,11 +115,9 @@ func (word Word) Len() int {
 func (word Word) First() (Data, error) {
 	var data Data = Data{}
 
-    d, err  := word.GetEntries([]int{1}...)
-    if err != nil {
-            return data,err
-    }
-    return  d[len(d)-1] , nil 
+	d, err := word.GetEntries([]int{1}...)
+	if err != nil {
+		return data, err
+	}
+	return d[len(d)-1], nil
 }
-
-

@@ -48,14 +48,12 @@ func TestGetWord(t *testing.T) {
     }
 
 	d, err := w.First()
-    t.Logf("FIRST: %v", d)
 	if err != nil {
 		t.Errorf("ERROR: couldn't get first item")
 	}
 	if d.Slug != "犬" {
 		t.Errorf("ERROR: wrong slug %s should be 犬", d.Slug)
 	}
-    t.Logf("SLUG: %s", d.Slug)
 }
 
 //func TestGetFirst(t *testing.T) {
