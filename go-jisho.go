@@ -140,7 +140,7 @@ func (word WordData) Len() int {
 
 
 // gets First instance of data field from WordData 
-func (word WordData) First() (Data, error) {
+func (word *WordData) First() (Data, error) {
 	var data Data = Data{}
 
 	d, err := word.GetEntries([]int{1}...)
@@ -150,6 +150,14 @@ func (word WordData) First() (Data, error) {
 	}
 	return d[len(d)-1], nil
 
+}
+// get First Transation if theres is none it return empty string
+func (word *WordData) FirstTransation() string {
+    d, err := word.First()
+    if err != nil {
+        return ""
+    }
+    return d.Senses[0].EnglishDefinitions[0]
 }
 
 // takse first data field and return IsCommon field 
