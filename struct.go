@@ -1,6 +1,6 @@
 package gojisho
 
-type Word struct {
+type WordData struct {
 	Meta struct {
 		Status int `json:"status"`
 	} `json:"meta"`

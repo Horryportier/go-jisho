@@ -7,21 +7,25 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 )
 
 const (
 	api string = "https://jisho.org/api/v1/search/words?keyword="
 )
 
-func GetUrl(key string) string {
-	url := fmt.Sprintf("%s%s", api, key)
-	//fmt.Println(url)
+
+func getUrl(sentance string) string {
+    var parsed string = url.QueryEscape(sentance)
+    var url string = fmt.Sprintf("%s%s", api, parsed)
 	return url
 }
 
-//BUG: passing kanji will result in bad request even if request works in web browser
-func Search(key string) ([]byte, error) {
-	url := GetUrl(key)
+// will give you raw []byte data of the request 
+// trows error when bad request 
+// you sould only use this method when you wan't raw json data
+func Search(sentance string) ([]byte, error) {
+	url := getUrl(sentance)
 
 	client := &http.Client{}
 
@@ -30,32 +34,51 @@ func Search(key string) ([]byte, error) {
 		return []byte{}, err
 	}
 
-	req.Header.Set("User-Agent", "Golang_Spider_Bot/3.0")
-
 	resp, err := client.Do(req)
 	if err != nil {
 		return []byte{}, err
 	}
+
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return []byte{}, err
 	}
-	//fmt.Printf("res: %s", body)
 	return body, nil
 }
 
-func (word Word) Parse(payload []byte) (Word, error) {
+
+
+// parses byte data into WordData 
+// returns error when json.Unmarshal fails
+func (word *WordData) Parse(payload []byte) (error) {
 	err := json.Unmarshal([]byte(payload), &word)
 	if err != nil {
-		fmt.Println("s1 err:", ResolveUnmarshalErr(payload, err))
-		return word, err
+		return  err
 	}
-	return word, nil
+	return nil
 }
 
+
+// simpler way to get WordData ex.
+//     var w WordData 
+//     w.Get("犬")
+func (word *WordData) Get(sentace string)  error {
+    res,err := Search(sentace)
+    if err != nil {
+        return err
+    }
+    err = word.Parse(res)
+    if err != nil {
+        return err
+    }
+    return nil
+}
+
+
 // gets  indexes and returs respective items
-func (word Word) GetEntries(index ...int) ([]Data, error) {
+// returns error when no items in data field 
+func (word WordData) GetEntries(index ...int) ([]Data, error) {
 	var data []Data
 	for i := range index {
 		if i >= word.Len() {
@@ -67,7 +90,8 @@ func (word Word) GetEntries(index ...int) ([]Data, error) {
 }
 
 // gets indexes and returns all japanese kanji and writing
-func (word Word) TransJapan(index ...int) ([]Japanese, error) {
+// returns error when no items in japanese field 
+func (word WordData) TransJapan(index ...int) ([]Japanese, error) {
 	var data []Japanese
 	for _, val := range index {
 		if val >= word.Len() {
@@ -79,7 +103,8 @@ func (word Word) TransJapan(index ...int) ([]Japanese, error) {
 }
 
 // Gets eng EngDefinition for every item in data
-func (word Word) EngDefinition(index ...int) ([]Senses, error) {
+// rutuns error when no items in EngDefinition field
+func (word WordData) EngDefinition(index ...int) ([]Senses, error) {
 	var data []Senses
 	for _, val := range index {
 		if val >= word.Len() {
@@ -91,31 +116,49 @@ func (word Word) EngDefinition(index ...int) ([]Senses, error) {
 }
 
 // Gets eng Jlpt every item in data
-func (word Word) Jlpt(index ...int) []string {
+// rutuns error when no items in Jlpt field
+func (word WordData) Jlpt(index ...int) ([]string, error) {
 	var data []string
 	for _, val := range index {
 		if val >= word.Len() {
-			log.Fatal("index out of range")
+			return data, errors.New("No items in Jlpt")
 		}
 		data = append(data, word.Data[val].Jlpt...)
 	}
-	return data
+	return data, nil
 }
 
-func (word Word) Status() int {
+func (word WordData) Status() int {
 	return word.Meta.Status
 }
 
-func (word Word) Len() int {
+// returns leangth of Data instances in WordData 
+// usefull when quering with function like Jlpt 
+// ex. jlpt := Jlpt(0...Len()) => array of jlpt strings
+func (word WordData) Len() int {
 	return len(word.Data)
 }
 
-func (word Word) First() (Data, error) {
+
+// gets First instance of data field from WordData 
+func (word WordData) First() (Data, error) {
 	var data Data = Data{}
 
 	d, err := word.GetEntries([]int{1}...)
+
 	if err != nil {
 		return data, err
 	}
 	return d[len(d)-1], nil
+
 }
+
+// takse first data field and return IsCommon field 
+func (word *WordData) IsCommon() bool {
+    d, err := word.First()
+    if err != nil  {
+        return false
+    }
+    return d.IsCommon
+}
+

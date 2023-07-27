@@ -110,46 +110,33 @@
       }
     },
     {
-      "slug": "戌",
-      "is_common": true,
+      "slug": "犬歯",
+      "is_common": false,
       "tags": [],
       "jlpt": [],
       "japanese": [
         {
-          "word": "戌",
-          "reading": "いぬ"
+          "word": "犬歯",
+          "reading": "けんし"
         }
       ],
       "senses": [
         {
           "english_definitions": [
-            "the Dog (eleventh sign of the Chinese zodiac)"
+            "eyetooth",
+            "cuspid",
+            "canine (tooth)",
+            "dogtooth"
           ],
           "parts_of_speech": [
-            "Noun"
+            "Noun",
+            "Noun which may take the genitive case particle 'no'"
           ],
           "links": [],
           "tags": [],
-          "restrictions": [],
-          "see_also": [],
-          "antonyms": [],
-          "source": [],
-          "info": []
-        },
-        {
-          "english_definitions": [
-            "hour of the Dog (around 8pm, 7-9pm, or 8-10pm)"
-          ],
-          "parts_of_speech": [
-            "Noun"
-          ],
-          "links": [],
-          "tags": [
-            "Obsolete term"
-          ],
           "restrictions": [],
           "see_also": [
-            "戌の刻"
+            "糸切り歯"
           ],
           "antonyms": [],
           "source": [],
@@ -157,68 +144,19 @@
         },
         {
           "english_definitions": [
-            "west-northwest"
-          ],
-          "parts_of_speech": [
-            "Noun"
-          ],
-          "links": [],
-          "tags": [
-            "Obsolete term"
-          ],
-          "restrictions": [],
-          "see_also": [],
-          "antonyms": [],
-          "source": [],
-          "info": []
-        },
-        {
-          "english_definitions": [
-            "ninth month of the lunar calendar"
-          ],
-          "parts_of_speech": [
-            "Noun"
-          ],
-          "links": [],
-          "tags": [
-            "Obsolete term"
-          ],
-          "restrictions": [],
-          "see_also": [],
-          "antonyms": [],
-          "source": [],
-          "info": []
-        },
-        {
-          "english_definitions": [
-            "Inu"
-          ],
-          "parts_of_speech": [
-            "Place"
-          ],
-          "links": [],
-          "tags": [],
-          "restrictions": [],
-          "see_also": [],
-          "antonyms": [],
-          "source": [],
-          "info": []
-        },
-        {
-          "english_definitions": [
-            "Dog (zodiac)"
+            "Canine tooth"
           ],
           "parts_of_speech": [
             "Wikipedia definition"
           ],
           "links": [
             {
-              "text": "Read “Dog (zodiac)” on English Wikipedia",
-              "url": "http://en.wikipedia.org/wiki/Dog_(zodiac)?oldid=494264605"
+              "text": "Read “Canine tooth” on English Wikipedia",
+              "url": "http://en.wikipedia.org/wiki/Canine_tooth?oldid=492876533"
             },
             {
-              "text": "Read “戌” on Japanese Wikipedia",
-              "url": "http://ja.wikipedia.org/wiki/戌?oldid=40772413"
+              "text": "Read “犬歯” on Japanese Wikipedia",
+              "url": "http://ja.wikipedia.org/wiki/犬歯?oldid=42526053"
             }
           ],
           "tags": [],
@@ -232,125 +170,8 @@
       ],
       "attribution": {
         "jmdict": true,
-        "jmnedict": true,
-        "dbpedia": "http://dbpedia.org/resource/Dog_(zodiac)"
-      }
-    },
-    {
-      "slug": "往ぬ",
-      "is_common": false,
-      "tags": [],
-      "jlpt": [],
-      "japanese": [
-        {
-          "word": "往ぬ",
-          "reading": "いぬ"
-        },
-        {
-          "word": "去ぬ",
-          "reading": "いぬ"
-        }
-      ],
-      "senses": [
-        {
-          "english_definitions": [
-            "to go home"
-          ],
-          "parts_of_speech": [
-            "Godan verb with nu ending",
-            "Irregular nu verb",
-            "Intransitive verb"
-          ],
-          "links": [],
-          "tags": [
-            "Kansai dialect"
-          ],
-          "restrictions": [],
-          "see_also": [],
-          "antonyms": [],
-          "source": [],
-          "info": []
-        },
-        {
-          "english_definitions": [
-            "to go",
-            "to leave"
-          ],
-          "parts_of_speech": [
-            "Godan verb with nu ending",
-            "Irregular nu verb",
-            "Intransitive verb"
-          ],
-          "links": [],
-          "tags": [
-            "Archaism"
-          ],
-          "restrictions": [],
-          "see_also": [],
-          "antonyms": [],
-          "source": [],
-          "info": []
-        },
-        {
-          "english_definitions": [
-            "to pass (of time)"
-          ],
-          "parts_of_speech": [
-            "Irregular nu verb",
-            "Intransitive verb"
-          ],
-          "links": [],
-          "tags": [
-            "Archaism"
-          ],
-          "restrictions": [],
-          "see_also": [],
-          "antonyms": [],
-          "source": [],
-          "info": []
-        },
-        {
-          "english_definitions": [
-            "to die"
-          ],
-          "parts_of_speech": [
-            "Irregular nu verb",
-            "Intransitive verb"
-          ],
-          "links": [],
-          "tags": [
-            "Archaism"
-          ],
-          "restrictions": [],
-          "see_also": [],
-          "antonyms": [],
-          "source": [],
-          "info": []
-        },
-        {
-          "english_definitions": [
-            "to go bad",
-            "to rot"
-          ],
-          "parts_of_speech": [
-            "Irregular nu verb",
-            "Intransitive verb"
-          ],
-          "links": [],
-          "tags": [
-            "Archaism"
-          ],
-          "restrictions": [],
-          "see_also": [],
-          "antonyms": [],
-          "source": [],
-          "info": []
-        }
-      ],
-      "attribution": {
-        "jmdict": true,
         "jmnedict": false,
-        "dbpedia": false
+        "dbpedia": "http://dbpedia.org/resource/Canine_tooth"
       }
     },
     {
@@ -436,31 +257,24 @@
       }
     },
     {
-      "slug": "射抜く",
+      "slug": "犬嫌い",
       "is_common": false,
       "tags": [],
       "jlpt": [],
       "japanese": [
         {
-          "word": "射抜く",
-          "reading": "いぬく"
-        },
-        {
-          "word": "射貫く",
-          "reading": "いぬく"
+          "word": "犬嫌い",
+          "reading": "いぬぎらい"
         }
       ],
       "senses": [
         {
           "english_definitions": [
-            "to shoot through (a wall, the heart, etc.)",
-            "to go through",
-            "to pierce",
-            "to hit (e.g. the bull's-eye)"
+            "dog hater",
+            "dog hating"
           ],
           "parts_of_speech": [
-            "Godan verb with ku ending",
-            "Transitive verb"
+            "Expressions (phrases, clauses, etc.)"
           ],
           "links": [],
           "tags": [],
@@ -571,27 +385,31 @@
       }
     },
     {
-      "slug": "犬嫌い",
+      "slug": "犬猿の仲",
       "is_common": false,
       "tags": [],
       "jlpt": [],
       "japanese": [
         {
-          "word": "犬嫌い",
-          "reading": "いぬぎらい"
+          "word": "犬猿の仲",
+          "reading": "けんえんのなか"
         }
       ],
       "senses": [
         {
           "english_definitions": [
-            "dog hater",
-            "dog hating"
+            "like cats and dogs",
+            "(on) very bad terms",
+            "relationship of dogs and monkeys"
           ],
           "parts_of_speech": [
-            "Expressions (phrases, clauses, etc.)"
+            "Expressions (phrases, clauses, etc.)",
+            "Noun"
           ],
           "links": [],
-          "tags": [],
+          "tags": [
+            "Idiomatic expression"
+          ],
           "restrictions": [],
           "see_also": [],
           "antonyms": [],
@@ -606,21 +424,29 @@
       }
     },
     {
-      "slug": "犬釘",
+      "slug": "犬掻き",
       "is_common": false,
       "tags": [],
       "jlpt": [],
       "japanese": [
         {
-          "word": "犬釘",
-          "reading": "いぬくぎ"
+          "word": "犬かき",
+          "reading": "いぬかき"
+        },
+        {
+          "word": "犬掻き",
+          "reading": "いぬかき"
+        },
+        {
+          "word": "犬搔き",
+          "reading": "いぬかき"
         }
       ],
       "senses": [
         {
           "english_definitions": [
-            "spike",
-            "dog nail"
+            "dog paddle (swimming style)",
+            "doggy paddle"
           ],
           "parts_of_speech": [
             "Noun"
@@ -635,19 +461,19 @@
         },
         {
           "english_definitions": [
-            "Rail spike"
+            "Dog paddle"
           ],
           "parts_of_speech": [
             "Wikipedia definition"
           ],
           "links": [
             {
-              "text": "Read “Rail spike” on English Wikipedia",
-              "url": "http://en.wikipedia.org/wiki/Rail_spike?oldid=385641896"
+              "text": "Read “Dog paddle” on English Wikipedia",
+              "url": "http://en.wikipedia.org/wiki/Dog_paddle?oldid=483337852"
             },
             {
-              "text": "Read “犬釘” on Japanese Wikipedia",
-              "url": "http://ja.wikipedia.org/wiki/犬釘?oldid=40346064"
+              "text": "Read “犬掻き” on Japanese Wikipedia",
+              "url": "http://ja.wikipedia.org/wiki/犬掻き?oldid=40553179"
             }
           ],
           "tags": [],
@@ -662,7 +488,75 @@
       "attribution": {
         "jmdict": true,
         "jmnedict": false,
-        "dbpedia": "http://dbpedia.org/resource/Rail_spike"
+        "dbpedia": "http://dbpedia.org/resource/Dog_paddle"
+      }
+    },
+    {
+      "slug": "犬槙",
+      "is_common": false,
+      "tags": [],
+      "jlpt": [],
+      "japanese": [
+        {
+          "word": "犬槙",
+          "reading": "いぬまき"
+        },
+        {
+          "word": "犬槇",
+          "reading": "いぬまき"
+        },
+        {
+          "reading": "イヌマキ"
+        }
+      ],
+      "senses": [
+        {
+          "english_definitions": [
+            "yew plum pine (Podocarpus macrophyllus)"
+          ],
+          "parts_of_speech": [
+            "Noun"
+          ],
+          "links": [],
+          "tags": [
+            "Usually written using kana alone"
+          ],
+          "restrictions": [],
+          "see_also": [],
+          "antonyms": [],
+          "source": [],
+          "info": []
+        },
+        {
+          "english_definitions": [
+            "Podocarpus macrophyllus"
+          ],
+          "parts_of_speech": [
+            "Wikipedia definition"
+          ],
+          "links": [
+            {
+              "text": "Read “Podocarpus macrophyllus” on English Wikipedia",
+              "url": "http://en.wikipedia.org/wiki/Podocarpus_macrophyllus?oldid=487562575"
+            },
+            {
+              "text": "Read “イヌマキ” on Japanese Wikipedia",
+              "url": "http://ja.wikipedia.org/wiki/イヌマキ?oldid=42246648"
+            }
+          ],
+          "tags": [],
+          "restrictions": [],
+          "see_also": [],
+          "antonyms": [],
+          "source": [],
+          "info": [],
+          "sentences": []
+        }
+      ],
+      "attribution": {
+        "jmdict": true,
+        "jmnedict": false,
+        "dbpedia": "http://dbpedia.org/resource/Podocarpus_macrophyllus"
       }
     }
   ]
