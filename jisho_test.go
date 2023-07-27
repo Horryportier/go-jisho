@@ -1,9 +1,6 @@
 package gojisho
 
 import (
-	"bufio"
-	"log"
-	"os"
 	"testing"
 )
 
@@ -11,27 +8,6 @@ import (
 const (
     query = "犬"
 )
-
-func payload() []byte {
-	file, err := os.Open("payload.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	stat, err := file.Stat()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	var b = make([]byte, stat.Size())
-	_, err = bufio.NewReader(file).Read(b)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return b
-}
 
 func TestGetbyKanji(t *testing.T) {
     res, err := Search(query)
